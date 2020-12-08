@@ -9,27 +9,25 @@
     <div class="card-body">
 
     <h3>
-        Title of the Study: Laboratory experiments in decision making
+        Title of the Study: Laboratory experiments
     </h3>
      <h3>
-      Study sub-title: Risky choices (MonLEE 10030)
+      Study sub-title: Individual decision making July 2020 (MonLEE 10039)
         <!--- Study sub-title: Entry and Exit decisions (MonLEE 10027) -->
     </h3>
     
     <h4>
-    Experimenter: Dr. Jean Paul Rabanal, Monash Business School 
+    Experimenter: Jean Paul Rabanal, Ph.D., Monash Business School
     </h4>
     <ul>
             
-    
+
         <li>
         I agree to take part in the Monash University research project mentioned above.
-        I have had the project explained to me, and I have read the Explanatory Statement, which 
-        I might keep for my records. 
         </li>
         <li>
         I understand that the points I earned through the session will be converted to cash
-        at the end of the session. The final amount to be paid may depend from my choices, other participants' decisions, and chance. 
+        at the end of the session. The final amount to be paid may depend from my choices and chance.
         </li>
         <li>
         I understand that my participation today is voluntary, that I can choose to not to participate in part or all of the session, 
@@ -43,7 +41,10 @@
 
     
     {% formfield player.name label="Please, write your name" %}
-    
+
+    {% formfield player.payid label="Please, write your PayID (phone number or email associated to your Australian bank account)" %}
+
+
     {% formfield player.accept label='Will you accept the consent form?' %}
 
 

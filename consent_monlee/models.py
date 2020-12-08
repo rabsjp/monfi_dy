@@ -22,7 +22,9 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     name = models.CharField()
-    
+
+    payid = models.CharField()
+
     accept = models.BooleanField(
         doc="""Whether subject accepts the consent form""",
         widget=widgets.RadioSelect,

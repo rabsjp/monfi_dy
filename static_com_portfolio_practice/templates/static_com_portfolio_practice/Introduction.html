@@ -1,0 +1,12 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Practice Rounds
+{% endblock %}
+
+{% block content %}
+    <p>You will now practice the task for {{Constants.num_rounds}} rounds.</p>
+    <p>The points you earn here do not affect your final payment.</p>
+    {% next_button %}
+{% endblock %}

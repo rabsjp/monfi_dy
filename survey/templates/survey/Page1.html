@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Survey
+{% endblock %}
+
+{% block content %}
+    <p>
+    Please answer the following questions.
+    Your responses are completely confidential and anonymous.
+    </p>
+    {% formfield player.sex label="Your sex" %}
+    {% formfield player.major label="Your major" %}
+    {% next_button %}
+{% endblock %}

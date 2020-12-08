@@ -1,0 +1,73 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Practice Round {{ subsession.round_number }}: Results
+{% endblock %}
+
+{% block content %}
+    <p>The winning lottery is number {{realized_lottery}}</p>
+    <p>Your payoff for this practice round is {{player.static_realized_pay}}. This will not be counted toward your final earnings.</p>
+    <div id="table1" align="center"></div>
+    {% next_button %}
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script>
+        var prices = JSON.parse({{subsession.static_prices|json}});
+        var chances = JSON.parse({{subsession.static_chances|json}});
+        var quantities = JSON.parse({{player.static_securities|json}});
+        var table = d3.select("#table1").append("table");
+        var head = table.append("thead").append("tr");
+        head.append("td").html("Lottery");
+        head.append("td").html("Chance (%)");
+        head.append("td").html("Price");
+        head.append("td").html("Quantity");
+        head.append("td").html("Expenditure");
+        for(i=1; i<{{ num_states|json }}+1; i++){
+            state = {{ num_states|json }} + 1 - i;
+            price_label = "p_" + state;
+            chance_label = "pi_"+ state
+            security_label = "q_" + state;
+            expenditure_label = "e_" + state;
+            var row = table.append("tr");
+            if(i=={{realized_lottery|json}}){
+                row.attr("class", "realrow");
+            };
+            row.append("td").html(i);
+            var price = Math.round(prices[price_label]*10000)/100;
+            var chance = chances[chance_label]*100;
+            row.append("td").html(chance);
+            row.append("td").html(price);
+            row.append("td").append("xhtml:input")
+                    .attr("size",3)
+                    .attr("id",security_label)
+                    .attr("readonly","readonly")
+                    .attr("value",quantities[security_label]);
+            var expenditure = price/100 * quantities[security_label];
+            row.append("td").html(Math.round(10*expenditure)/10);
+        };
+        var bottom_row = table.append("tr");
+        bottom_row.append("td").attr("colspan","4").html("Total available wealth:");
+        bottom_row.append("td").html({{subsession.initial_wealth|json}});
+     </script>
+
+{% endblock %}
+
+
+{% block styles %}
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        tr.realrow {background-color: lightblue;}
+        div {margin-top: 50px}
+        input{
+            width: 40px;
+        }
+    </style>
+{% endblock %}

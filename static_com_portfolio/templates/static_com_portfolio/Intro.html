@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part L
+{% endblock %}
+
+{% block content %}
+    <p>You will now play {{Constants.num_rounds}} rounds. The points you earn here will count toward your final payment.</p>
+    <p>The results are shown after you complete ALL tasks. </p>
+    {% next_button %}
+{% endblock %}
+
+
+{% block styles %}
+    <style>
+        input, body {
+          font-family: 'Helvetica', Arial, Lucida Grande, sans-serif;
+          font-size: 14px;
+        }
+    </style>
+{% endblock %}
+
