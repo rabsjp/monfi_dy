@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    The experiment is over.
+{% endblock %}
+
+{% block content %}
+
+
+
+<p>
+    You earned {{player.participant.payoff}}.
+</p>
+
+<p>
+    Your cash payout in Australian dollars, including the show-up fee of {{fee}}, is: {{participant.payoff_plus_participation_fee}}.
+</p>
+
+{% endblock %}
