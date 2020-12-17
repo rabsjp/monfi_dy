@@ -1,0 +1,7 @@
+id,question,choice1,choice2,choice3,solution
+1,What is the value of asset C in state Z (please refer to the state payoff table above)?,90,120,180,90
+2,What is the value of asset D in state X?,180,300,0,180
+3,What is the value of asset A in state Y?,120,90,0,120
+4,"If you hold 1 D asset and 2 B assets, and asset D = 1A + 2C and state Y is realized, what is the value of your portfolio?",0,300,120,120
+5,"For a computerized trader to offer asset D for sale,  which is composed of 1A + 2C, which asks need to exist in the market?",Asks for asset C,Asks for 1 A and 1C ,Asks for 1A and 2C,Asks for 1A and 2C
+6,"If in one round state X was drawn, then what is the probability that Y occurs in another round? ","The draw of states is independent in each round, therefore the probability of observing Y in any round is 1/3.","The draw of states is not independent of each other, therefore the probability of observing Y in any round is 2/3",It cannot be determined. ,"The draw of states is independent in each round, therefore the probability of observing Y in any round is 1/3."

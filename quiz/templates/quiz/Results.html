@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You answered {{ questions_correct }} out of {{ Constants.num_rounds }}
+        questions correctly.
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>Question</th>
+            <th>Answered correctly?</th>
+            <th>Your answer</th>
+            <th>Correct answer</th>
+        </tr>
+        {% for p in player_in_all_rounds %}
+            <tr>
+                <td>{{ p.question }}</td>
+                {% if p.is_correct %}
+                <td>    Yes </td>
+                {%  else%}
+                    <td> <span style="color: #ff0000">  No </span> </td>
+                {%  endif  %}
+                <td>{{ p.submitted_answer }}</td>
+                <td>{{ p.solution }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    {% next_button %}
+{% endblock %}
+
+
