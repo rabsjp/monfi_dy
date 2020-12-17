@@ -1,0 +1,73 @@
+# sample round config
+# all endowments can be specified either as a single number or a list of endowments, one for each player in each group
+# if an endowment list is shorter than the number of players in the group, endowments wrap back around to the beginning
+
+# number of players in each group or null if there's only one group
+players_per_group: null
+pay_round: 6
+# starting cash endowment for each player
+cash_endowment: [0, 0]
+loan_value: 210
+# whether or not players are allowed to have negative available cash
+allow_short_cash: false
+# the length of the round in seconds
+period_length: 240
+# a multiplier used to change the way currency is displayed to players.
+# prices are integers, so all prices are divided by this number before being shown to players.
+# a scale of 1000 means that the smallest price a player can enter is 1/1000 or 0.001.
+# this should be a power of 10. it'd probably do weird things if it wasn't
+currency_scale: 1000
+# whether or not arbitrage bots are enabled
+bots_enabled: true
+
+# this field lists all the possible states and their relative probability of occuring.
+# the probability for each state is calculated as that state's prob_weight divided by
+# the sum of prob_weight across all states
+states:
+  X:
+    prob_weight: 1
+  Y:
+    prob_weight: 1
+  Z:
+    prob_weight: 1
+
+# this field describes the asset structure for the round
+asset_structure:
+  # name of the asset
+  A:
+    allow_short: true
+    # whether or not this is an etf asset
+    is_etf: false
+    # initial endowment of this asset
+    endowment: [3, 1]
+    # the state-dependent payoffs for this asset
+    # only specified when asset ISN'T an etf
+    payoffs:
+      X: 0
+      Y: 120
+      Z: 120
+  B:
+    allow_short: true
+    is_etf: false
+    endowment: [1, 3]
+    payoffs:
+      X: 90
+      Y: 0
+      Z: 90
+  C:
+    allow_short: true
+    is_etf: false
+    endowment: [1, 3]
+    payoffs:
+      X: 90
+      Y: 0
+      Z: 90
+  D:
+    allow_short: false
+    is_etf: true
+    endowment: 0
+    # the component assets which compose this etf
+    # only specified when asset IS an etf
+    etf_weights:
+      A: 1
+      C: 2
